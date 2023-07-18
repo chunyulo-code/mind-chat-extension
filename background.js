@@ -9,6 +9,7 @@ import {
   onSnapshot
 } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-firestore.js";
 import { getAuth } from "https://www.gstatic.com/firebasejs/10.0.0/firebase-auth.js";
+import { nanoid } from "https://cdn.jsdelivr.net/npm/nanoid/nanoid.js";
 
 // background.js
 const firebaseConfig = {
@@ -56,18 +57,17 @@ async function getAllMaps(userUid) {
   allMapsSnapshot.forEach((doc) =>
     allMaps.push({ mapId: doc.id, mapName: doc.data().mapName })
   );
-  console.log(allMaps);
 
   allMaps.reverse().forEach((map) => {
     chrome.contextMenus.create({
       title: map.mapName,
-      id: `add/${userUid}/${map.mapId}`,
+      id: `add/${userUid}/${map.mapId}/${nanoid()}`,
       contexts: ["selection"],
       parentId: "addToMindChat"
     });
     chrome.contextMenus.create({
       title: map.mapName,
-      id: `addAndGo/${userUid}/${map.mapId}`,
+      id: `addAndGo/${userUid}/${map.mapId}/${nanoid()}`,
       contexts: ["selection"],
       parentId: "addToMindChatAndGo"
     });
