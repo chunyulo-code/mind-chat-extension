@@ -1,0 +1,16 @@
+{
+  "manifest_version": 3,
+  "name": "Mind Chat",
+  "version": "1.0.0",
+  "description": "MIND CHAT is a web application that facilitates visual thinking for users by combining mind maps and ChatGPT.",
+  "icons": {
+    "16": "img/icon.png",
+    "48": "img/icon.png"
+  },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "permissions": ["contextMenus", "tabs", "identity", "identity.email"],
+  "host_permissions": ["<all_urls>"]
+}
